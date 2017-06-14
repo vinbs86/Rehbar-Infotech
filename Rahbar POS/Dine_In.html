@@ -1,0 +1,184 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rahbrar Dine In</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato"  type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat"  type="text/css">
+ 
+    <style>	
+		body
+		{
+			font-family:Montserrat;
+			position: relative;
+		}
+		#LocationReload {
+			margin-left:10px;
+			margin-right:0px;
+		}
+		#LocationReload .container {
+			margin-left:0px;
+			margin-right:0px;
+		}
+		.reloadButtons{
+			margin-right:0%;
+			float:right;
+		}
+		#areaHeading {
+			margin-top:8%;
+		}
+		#areaHeading .container {
+			margin-left:0%;
+			margin-right:0px;
+			width:100%;
+		}
+		#areaHeading h2 {
+			margin-top:0px;
+			padding-left:0px;
+			font-weight:bold;
+			display:inline;
+		}
+		#areaHeading hr {
+			margin-top:5%;
+			border-top: 1px solid #989898;
+			width:100%;
+		}
+		.tableInformation {
+			padding-left:4.5%;
+			padding-right:0px;
+			display:inline;
+			float:right;
+		}
+		#areaHeading .tables {
+			padding-left:%;
+		}
+		#areaHeading .tables .btn {
+			margin-top:1%;
+			margin-right:1%;
+			width:150px;
+			height:125px;
+		}
+	    </style>
+</head>
+
+<body>
+    <!------------------------------->
+	<!-------Navbar start here------->
+    <!------------------------------->
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RahbarInfoTech</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Walk-in <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Dine-in</a></li>
+            <li><a href="#">CRM</a></li>
+            <li><a href="#">Delivery Manager</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              	<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!------------------------------->
+    <!-------Navbar end here--------->
+    <!------------------------------->
+    
+    <div id="LocationReload">
+            <div class="col-md-3">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <select class="form-control">
+                          <option>Dilshad Garden</option>
+                          <option>DLF Saket</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;Reload</button>           	
+                </form>
+            </div>
+            <div class="reloadButtons col-md-4">
+            	<button type="submit" class="btn btn-primary">All Tables</button>
+                <button type="submit" class="btn btn-success">Running Order</button>
+                <button type="submit" class="btn btn-warning">Completed Order</button>
+            </div>
+    </div>
+
+	<div id="areaHeading">
+    	<div class="container">
+        	<p>Select Table :</p>
+            <div class="diningArea">
+                <h2 class="col-md-4">
+                    Main Area Dining
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                </h2>
+                <div class="tableInformation col-md-4 text-center">
+                    <button class="btn btn-success btn-sm">Avialable&nbsp;<span class="badge">11</span></button>
+                    <button class="btn btn-default btn-sm">Occupied&nbsp;<span class="badge">0</span></button>
+                    <button class="btn btn-warning btn-sm">Done Soon&nbsp;<span class="badge">2</span></button>
+                </div>
+            </div>
+            <hr>
+            <div class="tables col-md-12 text-center">
+            	<button type="button" class="btn btn-success btn-lg"><h1>1</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>2</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>3</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>4</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>5</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>6</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>7</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>8</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>9</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>10</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>11</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>12</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>13</h1></button>
+                <button type="button" class="btn btn-success btn-lg"><h1>14</h1></button>
+            </div>
+    	</div>
+    </div>
+    
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+</body>
+</html>

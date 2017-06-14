@@ -1,0 +1,2157 @@
+<?php
+        session_start();
+		
+        if(isset($_SESSION['u_name']) && isset($_SESSION['u_type']))
+		{		
+			if(isset($_SESSION['u_loc_cat_id'])) 
+			{
+				$cat_var=1;
+			}
+			else
+				$cat_var=0;
+		}
+		else
+			header("location: rahbar_index_final.html");	
+?>
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Location Page</title>
+ 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.vertical-tabs.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato"  type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat"  type="text/css">    
+    <style>
+	body
+	{
+		font-family:Montserrat;	
+	}
+	.navbar-default
+	{
+		margin-bottom:0px;
+	}
+    .DiscountTable {
+        margin-top:15px;
+    }
+    #tax .table {
+        margin-top:2%;
+        margin-bottom:2%;
+    }
+    #tax .background {
+        background-color:#
+    }
+    </style>
+</head>
+    
+<body>     	  
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">RahbarInfoTech</a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li ><a href="walk_in.php">Walk-in <span class="sr-only">(current)</span></a></li>
+            <li><a href="Dine_In.php">Dine-in</a></li>
+            <li><a href="#">CRM</a></li>
+            <li><a href="#">Delivery Manager</a></li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><?php echo $_SESSION['u_name'];;?></a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></a>
+              <ul class="dropdown-menu">
+                <li class="active"><a href="#">Control Panel</a></li>
+                <li><a href="admin_form.php">Setup</a></li>
+                <li><a href="#">Profile</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="logout.php">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+	  
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#Genral_details" aria-controls="home" role="tab" data-toggle="tab">General Details</a></li>
+        <li role="presentation"><a href="#Discounts" aria-controls="Discounts" role="tab" data-toggle="tab">Discounts</a></li>
+        <li role="presentation"><a href="#tax" aria-controls="messages" role="tab" data-toggle="tab">Tax Rates</a></li>
+        <li role="presentation"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab">Menu</a></li>
+        <li role="presentation"><a href="#staff" aria-controls="staff" role="tab" data-toggle="tab">Staff</a></li>
+		<li role="presentation"><a href="#D_S" aria-controls="D_S" role="tab" data-toggle="tab">Dining Sections</a></li>
+      </ul> 
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!-------Genral Details start here------------>
+        <div role="tabpanel" class="tab-pane active" id="Genral_details">
+            <div class="panel panel-default">
+                <div class="panel-body">
+					<form class="form-horizontal" role="form" method="POST" action="">
+								<div class="form-group">
+									<label for="" class="control-label col-md-2">Location Type</label>
+									<div class="col-md-3">
+										<select class="form-control">
+                                            <option>Sales</option>
+                                            <option>Markiting</option>
+                                        </select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="control-label col-md-2">Name</label>
+									<div class="col-md-3">
+										<input type="text" name="" class="form-control">
+									</div>
+								</div>
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Address</label>
+								<div class="col-md-3">
+									<input type="text" name="" class="form-control">
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Address 2</label>
+								<div class="col-md-3">
+									<input type="text" name="" class="form-control">
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">City</label>
+								<div class="col-md-3">
+									<input type="text" name="" class="form-control">
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Country</label>
+								<div class="col-md-3">
+                                    <select class="form-control">
+                                        <option value="">Country...</option>
+                                        <option value="Afganistan">Afghanistan</option>
+                                        <option value="Albania">Albania</option>
+                                        <option value="Algeria">Algeria</option>
+                                        <option value="American Samoa">American Samoa</option>
+                                        <option value="Andorra">Andorra</option>
+                                        <option value="Angola">Angola</option>
+                                        <option value="Anguilla">Anguilla</option>
+                                        <option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
+                                        <option value="Argentina">Argentina</option>
+                                        <option value="Armenia">Armenia</option>
+                                        <option value="Aruba">Aruba</option>
+                                        <option value="Australia">Australia</option>
+                                        <option value="Austria">Austria</option>
+                                        <option value="Azerbaijan">Azerbaijan</option>
+                                        <option value="Bahamas">Bahamas</option>
+                                        <option value="Bahrain">Bahrain</option>
+                                        <option value="Bangladesh">Bangladesh</option>
+                                        <option value="Barbados">Barbados</option>
+                                        <option value="Belarus">Belarus</option>
+                                        <option value="Belgium">Belgium</option>
+                                        <option value="Belize">Belize</option>
+                                        <option value="Benin">Benin</option>
+                                        <option value="Bermuda">Bermuda</option>
+                                        <option value="Bhutan">Bhutan</option>
+                                        <option value="Bolivia">Bolivia</option>
+                                        <option value="Bonaire">Bonaire</option>
+                                        <option value="Bosnia &amp; Herzegovina">Bosnia &amp; Herzegovina</option>
+                                        <option value="Botswana">Botswana</option>
+                                        <option value="Brazil">Brazil</option>
+                                        <option value="British Indian Ocean Ter">British Indian Ocean Ter</option>
+                                        <option value="Brunei">Brunei</option>
+                                        <option value="Bulgaria">Bulgaria</option>
+                                        <option value="Burkina Faso">Burkina Faso</option>
+                                        <option value="Burundi">Burundi</option>
+                                        <option value="Cambodia">Cambodia</option>
+                                        <option value="Cameroon">Cameroon</option>
+                                        <option value="Canada">Canada</option>
+                                        <option value="Canary Islands">Canary Islands</option>
+                                        <option value="Cape Verde">Cape Verde</option>
+                                        <option value="Cayman Islands">Cayman Islands</option>
+                                        <option value="Central African Republic">Central African Republic</option>
+                                        <option value="Chad">Chad</option>
+                                        <option value="Channel Islands">Channel Islands</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="China">China</option>
+                                        <option value="Christmas Island">Christmas Island</option>
+                                        <option value="Cocos Island">Cocos Island</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Comoros">Comoros</option>
+                                        <option value="Congo">Congo</option>
+                                        <option value="Cook Islands">Cook Islands</option>
+                                        <option value="Costa Rica">Costa Rica</option>
+                                        <option value="Cote DIvoire">Cote D'Ivoire</option>
+                                        <option value="Croatia">Croatia</option>
+                                        <option value="Cuba">Cuba</option>
+                                        <option value="Curaco">Curacao</option>
+                                        <option value="Cyprus">Cyprus</option>
+                                        <option value="Czech Republic">Czech Republic</option>
+                                        <option value="Denmark">Denmark</option>
+                                        <option value="Djibouti">Djibouti</option>
+                                        <option value="Dominica">Dominica</option>
+                                        <option value="Dominican Republic">Dominican Republic</option>
+                                        <option value="East Timor">East Timor</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                        <option value="Egypt">Egypt</option>
+                                        <option value="El Salvador">El Salvador</option>
+                                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                        <option value="Eritrea">Eritrea</option>
+                                        <option value="Estonia">Estonia</option>
+                                        <option value="Ethiopia">Ethiopia</option>
+                                        <option value="Falkland Islands">Falkland Islands</option>
+                                        <option value="Faroe Islands">Faroe Islands</option>
+                                        <option value="Fiji">Fiji</option>
+                                        <option value="Finland">Finland</option>
+                                        <option value="France">France</option>
+                                        <option value="French Guiana">French Guiana</option>
+                                        <option value="French Polynesia">French Polynesia</option>
+                                        <option value="French Southern Ter">French Southern Ter</option>
+                                        <option value="Gabon">Gabon</option>
+                                        <option value="Gambia">Gambia</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Germany">Germany</option>
+                                        <option value="Ghana">Ghana</option>
+                                        <option value="Gibraltar">Gibraltar</option>
+                                        <option value="Great Britain">Great Britain</option>
+                                        <option value="Greece">Greece</option>
+                                        <option value="Greenland">Greenland</option>
+                                        <option value="Grenada">Grenada</option>
+                                        <option value="Guadeloupe">Guadeloupe</option>
+                                        <option value="Guam">Guam</option>
+                                        <option value="Guatemala">Guatemala</option>
+                                        <option value="Guinea">Guinea</option>
+                                        <option value="Guyana">Guyana</option>
+                                        <option value="Haiti">Haiti</option>
+                                        <option value="Hawaii">Hawaii</option>
+                                        <option value="Honduras">Honduras</option>
+                                        <option value="Hong Kong">Hong Kong</option>
+                                        <option value="Hungary">Hungary</option>
+                                        <option value="Iceland">Iceland</option>
+                                        <option value="India">India</option>
+                                        <option value="Indonesia">Indonesia</option>
+                                        <option value="Iran">Iran</option>
+                                        <option value="Iraq">Iraq</option>
+                                        <option value="Ireland">Ireland</option>
+                                        <option value="Isle of Man">Isle of Man</option>
+                                        <option value="Israel">Israel</option>
+                                        <option value="Italy">Italy</option>
+                                        <option value="Jamaica">Jamaica</option>
+                                        <option value="Japan">Japan</option>
+                                        <option value="Jordan">Jordan</option>
+                                        <option value="Kazakhstan">Kazakhstan</option>
+                                        <option value="Kenya">Kenya</option>
+                                        <option value="Kiribati">Kiribati</option>
+                                        <option value="Korea North">Korea North</option>
+                                        <option value="Korea Sout">Korea South</option>
+                                        <option value="Kuwait">Kuwait</option>
+                                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                        <option value="Laos">Laos</option>
+                                        <option value="Latvia">Latvia</option>
+                                        <option value="Lebanon">Lebanon</option>
+                                        <option value="Lesotho">Lesotho</option>
+                                        <option value="Liberia">Liberia</option>
+                                        <option value="Libya">Libya</option>
+                                        <option value="Liechtenstein">Liechtenstein</option>
+                                        <option value="Lithuania">Lithuania</option>
+                                        <option value="Luxembourg">Luxembourg</option>
+                                        <option value="Macau">Macau</option>
+                                        <option value="Macedonia">Macedonia</option>
+                                        <option value="Madagascar">Madagascar</option>
+                                        <option value="Malaysia">Malaysia</option>
+                                        <option value="Malawi">Malawi</option>
+                                        <option value="Maldives">Maldives</option>
+                                        <option value="Mali">Mali</option>
+                                        <option value="Malta">Malta</option>
+                                        <option value="Marshall Islands">Marshall Islands</option>
+                                        <option value="Martinique">Martinique</option>
+                                        <option value="Mauritania">Mauritania</option>
+                                        <option value="Mauritius">Mauritius</option>
+                                        <option value="Mayotte">Mayotte</option>
+                                        <option value="Mexico">Mexico</option>
+                                        <option value="Midway Islands">Midway Islands</option>
+                                        <option value="Moldova">Moldova</option>
+                                        <option value="Monaco">Monaco</option>
+                                        <option value="Mongolia">Mongolia</option>
+                                        <option value="Montserrat">Montserrat</option>
+                                        <option value="Morocco">Morocco</option>
+                                        <option value="Mozambique">Mozambique</option>
+                                        <option value="Myanmar">Myanmar</option>
+                                        <option value="Nambia">Nambia</option>
+                                        <option value="Nauru">Nauru</option>
+                                        <option value="Nepal">Nepal</option>
+                                        <option value="Netherland Antilles">Netherland Antilles</option>
+                                        <option value="Netherlands">Netherlands (Holland, Europe)</option>
+                                        <option value="Nevis">Nevis</option>
+                                        <option value="New Caledonia">New Caledonia</option>
+                                        <option value="New Zealand">New Zealand</option>
+                                        <option value="Nicaragua">Nicaragua</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Nigeria">Nigeria</option>
+                                        <option value="Niue">Niue</option>
+                                        <option value="Norfolk Island">Norfolk Island</option>
+                                        <option value="Norway">Norway</option>
+                                        <option value="Oman">Oman</option>
+                                        <option value="Pakistan">Pakistan</option>
+                                        <option value="Palau Island">Palau Island</option>
+                                        <option value="Palestine">Palestine</option>
+                                        <option value="Panama">Panama</option>
+                                        <option value="Papua New Guinea">Papua New Guinea</option>
+                                        <option value="Paraguay">Paraguay</option>
+                                        <option value="Peru">Peru</option>
+                                        <option value="Phillipines">Philippines</option>
+                                        <option value="Pitcairn Island">Pitcairn Island</option>
+                                        <option value="Poland">Poland</option>
+                                        <option value="Portugal">Portugal</option>
+                                        <option value="Puerto Rico">Puerto Rico</option>
+                                        <option value="Qatar">Qatar</option>
+                                        <option value="Republic of Montenegro">Republic of Montenegro</option>
+                                        <option value="Republic of Serbia">Republic of Serbia</option>
+                                        <option value="Reunion">Reunion</option>
+                                        <option value="Romania">Romania</option>
+                                        <option value="Russia">Russia</option>
+                                        <option value="Rwanda">Rwanda</option>
+                                        <option value="St Barthelemy">St Barthelemy</option>
+                                        <option value="St Eustatius">St Eustatius</option>
+                                        <option value="St Helena">St Helena</option>
+                                        <option value="St Kitts-Nevis">St Kitts-Nevis</option>
+                                        <option value="St Lucia">St Lucia</option>
+                                        <option value="St Maarten">St Maarten</option>
+                                        <option value="St Pierre &amp; Miquelon">St Pierre &amp; Miquelon</option>
+                                        <option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
+                                        <option value="Saipan">Saipan</option>
+                                        <option value="Samoa">Samoa</option>
+                                        <option value="Samoa American">Samoa American</option>
+                                        <option value="San Marino">San Marino</option>
+                                        <option value="Sao Tome &amp; Principe">Sao Tome &amp; Principe</option>
+                                        <option value="Saudi Arabia">Saudi Arabia</option>
+                                        <option value="Senegal">Senegal</option>
+                                        <option value="Serbia">Serbia</option>
+                                        <option value="Seychelles">Seychelles</option>
+                                        <option value="Sierra Leone">Sierra Leone</option>
+                                        <option value="Singapore">Singapore</option>
+                                        <option value="Slovakia">Slovakia</option>
+                                        <option value="Slovenia">Slovenia</option>
+                                        <option value="Solomon Islands">Solomon Islands</option>
+                                        <option value="Somalia">Somalia</option>
+                                        <option value="South Africa">South Africa</option>
+                                        <option value="Spain">Spain</option>
+                                        <option value="Sri Lanka">Sri Lanka</option>
+                                        <option value="Sudan">Sudan</option>
+                                        <option value="Suriname">Suriname</option>
+                                        <option value="Swaziland">Swaziland</option>
+                                        <option value="Sweden">Sweden</option>
+                                        <option value="Switzerland">Switzerland</option>
+                                        <option value="Syria">Syria</option>
+                                        <option value="Tahiti">Tahiti</option>
+                                        <option value="Taiwan">Taiwan</option>
+                                        <option value="Tajikistan">Tajikistan</option>
+                                        <option value="Tanzania">Tanzania</option>
+                                        <option value="Thailand">Thailand</option>
+                                        <option value="Togo">Togo</option>
+                                        <option value="Tokelau">Tokelau</option>
+                                        <option value="Tonga">Tonga</option>
+                                        <option value="Trinidad &amp; Tobago">Trinidad &amp; Tobago</option>
+                                        <option value="Tunisia">Tunisia</option>
+                                        <option value="Turkey">Turkey</option>
+                                        <option value="Turkmenistan">Turkmenistan</option>
+                                        <option value="Turks &amp; Caicos Is">Turks &amp; Caicos Is</option>
+                                        <option value="Tuvalu">Tuvalu</option>
+                                        <option value="Uganda">Uganda</option>
+                                        <option value="Ukraine">Ukraine</option>
+                                        <option value="United Arab Erimates">United Arab Emirates</option>
+                                        <option value="United Kingdom">United Kingdom</option>
+                                        <option value="United States of America">United States of America</option>
+                                        <option value="Uraguay">Uruguay</option>
+                                        <option value="Uzbekistan">Uzbekistan</option>
+                                        <option value="Vanuatu">Vanuatu</option>
+                                        <option value="Vatican City State">Vatican City State</option>
+                                        <option value="Venezuela">Venezuela</option>
+                                        <option value="Vietnam">Vietnam</option>
+                                        <option value="Virgin Islands (Brit)">Virgin Islands (Brit)</option>
+                                        <option value="Virgin Islands (USA)">Virgin Islands (USA)</option>
+                                        <option value="Wake Island">Wake Island</option>
+                                        <option value="Wallis &amp; Futana Is">Wallis &amp; Futana Is</option>
+                                        <option value="Yemen">Yemen</option>
+                                        <option value="Zaire">Zaire</option>
+                                        <option value="Zambia">Zambia</option>
+                                        <option value="Zimbabwe">Zimbabwe</option>
+                                    </select>
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Time Zone</label>
+								<div class="col-md-3">
+									<select class="form-control">
+                                        <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
+                                        <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
+                                        <option timeZoneId="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" value="-10">(GMT-10:00) Hawaii</option>
+                                        <option timeZoneId="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" value="-9">(GMT-09:00) Alaska</option>
+                                        <option timeZoneId="5" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
+                                        <option timeZoneId="6" gmtAdjustment="GMT-08:00" useDaylightTime="1" value="-8">(GMT-08:00) Tijuana, Baja California</option>
+                                        <option timeZoneId="7" gmtAdjustment="GMT-07:00" useDaylightTime="0" value="-7">(GMT-07:00) Arizona</option>
+                                        <option timeZoneId="8" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+                                        <option timeZoneId="9" gmtAdjustment="GMT-07:00" useDaylightTime="1" value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
+                                        <option timeZoneId="10" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Central America</option>
+                                        <option timeZoneId="11" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Central Time (US & Canada)</option>
+                                        <option timeZoneId="12" gmtAdjustment="GMT-06:00" useDaylightTime="1" value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+                                        <option timeZoneId="13" gmtAdjustment="GMT-06:00" useDaylightTime="0" value="-6">(GMT-06:00) Saskatchewan</option>
+                                        <option timeZoneId="14" gmtAdjustment="GMT-05:00" useDaylightTime="0" value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
+                                        <option timeZoneId="15" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
+                                        <option timeZoneId="16" gmtAdjustment="GMT-05:00" useDaylightTime="1" value="-5">(GMT-05:00) Indiana (East)</option>
+                                        <option timeZoneId="17" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
+                                        <option timeZoneId="18" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Caracas, La Paz</option>
+                                        <option timeZoneId="19" gmtAdjustment="GMT-04:00" useDaylightTime="0" value="-4">(GMT-04:00) Manaus</option>
+                                        <option timeZoneId="20" gmtAdjustment="GMT-04:00" useDaylightTime="1" value="-4">(GMT-04:00) Santiago</option>
+                                        <option timeZoneId="21" gmtAdjustment="GMT-03:30" useDaylightTime="1" value="-3.5">(GMT-03:30) Newfoundland</option>
+                                        <option timeZoneId="22" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Brasilia</option>
+                                        <option timeZoneId="23" gmtAdjustment="GMT-03:00" useDaylightTime="0" value="-3">(GMT-03:00) Buenos Aires, Georgetown</option>
+                                        <option timeZoneId="24" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Greenland</option>
+                                        <option timeZoneId="25" gmtAdjustment="GMT-03:00" useDaylightTime="1" value="-3">(GMT-03:00) Montevideo</option>
+                                        <option timeZoneId="26" gmtAdjustment="GMT-02:00" useDaylightTime="1" value="-2">(GMT-02:00) Mid-Atlantic</option>
+                                        <option timeZoneId="27" gmtAdjustment="GMT-01:00" useDaylightTime="0" value="-1">(GMT-01:00) Cape Verde Is.</option>
+                                        <option timeZoneId="28" gmtAdjustment="GMT-01:00" useDaylightTime="1" value="-1">(GMT-01:00) Azores</option>
+                                        <option timeZoneId="29" gmtAdjustment="GMT+00:00" useDaylightTime="0" value="0">(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
+                                        <option timeZoneId="30" gmtAdjustment="GMT+00:00" useDaylightTime="1" value="0">(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
+                                        <option timeZoneId="31" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                                        <option timeZoneId="32" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+                                        <option timeZoneId="33" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                                        <option timeZoneId="34" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+                                        <option timeZoneId="35" gmtAdjustment="GMT+01:00" useDaylightTime="1" value="1">(GMT+01:00) West Central Africa</option>
+                                        <option timeZoneId="36" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Amman</option>
+                                        <option timeZoneId="37" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Athens, Bucharest, Istanbul</option>
+                                        <option timeZoneId="38" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Beirut</option>
+                                        <option timeZoneId="39" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Cairo</option>
+                                        <option timeZoneId="40" gmtAdjustment="GMT+02:00" useDaylightTime="0" value="2">(GMT+02:00) Harare, Pretoria</option>
+                                        <option timeZoneId="41" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
+                                        <option timeZoneId="42" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Jerusalem</option>
+                                        <option timeZoneId="43" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Minsk</option>
+                                        <option timeZoneId="44" gmtAdjustment="GMT+02:00" useDaylightTime="1" value="2">(GMT+02:00) Windhoek</option>
+                                        <option timeZoneId="45" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
+                                        <option timeZoneId="46" gmtAdjustment="GMT+03:00" useDaylightTime="1" value="3">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+                                        <option timeZoneId="47" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Nairobi</option>
+                                        <option timeZoneId="48" gmtAdjustment="GMT+03:00" useDaylightTime="0" value="3">(GMT+03:00) Tbilisi</option>
+                                        <option timeZoneId="49" gmtAdjustment="GMT+03:30" useDaylightTime="1" value="3.5">(GMT+03:30) Tehran</option>
+                                        <option timeZoneId="50" gmtAdjustment="GMT+04:00" useDaylightTime="0" value="4">(GMT+04:00) Abu Dhabi, Muscat</option>
+                                        <option timeZoneId="51" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Baku</option>
+                                        <option timeZoneId="52" gmtAdjustment="GMT+04:00" useDaylightTime="1" value="4">(GMT+04:00) Yerevan</option>
+                                        <option timeZoneId="53" gmtAdjustment="GMT+04:30" useDaylightTime="0" value="4.5">(GMT+04:30) Kabul</option>
+                                        <option timeZoneId="54" gmtAdjustment="GMT+05:00" useDaylightTime="1" value="5">(GMT+05:00) Yekaterinburg</option>
+                                        <option timeZoneId="55" gmtAdjustment="GMT+05:00" useDaylightTime="0" value="5">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+                                        <option timeZoneId="56" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Sri Jayawardenapura</option>
+                                        <option timeZoneId="57" gmtAdjustment="GMT+05:30" useDaylightTime="0" value="5.5">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                                        <option timeZoneId="58" gmtAdjustment="GMT+05:45" useDaylightTime="0" value="5.75">(GMT+05:45) Kathmandu</option>
+                                        <option timeZoneId="59" gmtAdjustment="GMT+06:00" useDaylightTime="1" value="6">(GMT+06:00) Almaty, Novosibirsk</option>
+                                        <option timeZoneId="60" gmtAdjustment="GMT+06:00" useDaylightTime="0" value="6">(GMT+06:00) Astana, Dhaka</option>
+                                        <option timeZoneId="61" gmtAdjustment="GMT+06:30" useDaylightTime="0" value="6.5">(GMT+06:30) Yangon (Rangoon)</option>
+                                        <option timeZoneId="62" gmtAdjustment="GMT+07:00" useDaylightTime="0" value="7">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                                        <option timeZoneId="63" gmtAdjustment="GMT+07:00" useDaylightTime="1" value="7">(GMT+07:00) Krasnoyarsk</option>
+                                        <option timeZoneId="64" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
+                                        <option timeZoneId="65" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Kuala Lumpur, Singapore</option>
+                                        <option timeZoneId="66" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
+                                        <option timeZoneId="67" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Perth</option>
+                                        <option timeZoneId="68" gmtAdjustment="GMT+08:00" useDaylightTime="0" value="8">(GMT+08:00) Taipei</option>
+                                        <option timeZoneId="69" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                                        <option timeZoneId="70" gmtAdjustment="GMT+09:00" useDaylightTime="0" value="9">(GMT+09:00) Seoul</option>
+                                        <option timeZoneId="71" gmtAdjustment="GMT+09:00" useDaylightTime="1" value="9">(GMT+09:00) Yakutsk</option>
+                                        <option timeZoneId="72" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Adelaide</option>
+                                        <option timeZoneId="73" gmtAdjustment="GMT+09:30" useDaylightTime="0" value="9.5">(GMT+09:30) Darwin</option>
+                                        <option timeZoneId="74" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Brisbane</option>
+                                        <option timeZoneId="75" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+                                        <option timeZoneId="76" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Hobart</option>
+                                        <option timeZoneId="77" gmtAdjustment="GMT+10:00" useDaylightTime="0" value="10">(GMT+10:00) Guam, Port Moresby</option>
+                                        <option timeZoneId="78" gmtAdjustment="GMT+10:00" useDaylightTime="1" value="10">(GMT+10:00) Vladivostok</option>
+                                        <option timeZoneId="79" gmtAdjustment="GMT+11:00" useDaylightTime="1" value="11">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
+                                        <option timeZoneId="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" value="12">(GMT+12:00) Auckland, Wellington</option>
+                                        <option timeZoneId="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
+                                        <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku'alofa</option>
+                                    </select>
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Currency</label>
+								<div class="col-md-3">
+									<p class="form-control-static">Rupee</p>
+								</div>
+							</div>	
+							<div class="form-group">
+								<label for="" class="control-label col-md-2">Telephone</label>
+								<div class="col-md-3">
+									<input type="number" name="" class="form-control">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="control-label col-md-2"></label>
+								<div class="col-md-3">
+									<button type="submit" class="btn btn-success">Update!</button>
+								</div>
+							</div>
+					    </form>
+                </div>
+            </div>
+		<!--<?php
+			$conn = new mysqli("localhost","root","","c1");
+					// Check connection
+					if ($conn->connect_error) 
+					{
+						die("Connection failed: " . $conn->connect_error);
+					}
+					$c_name=$_SESSION['u_company'];
+					
+					$loc=$_SESSION['u_loc'];
+					$sql = "SELECT * from location where loc_id='$loc';";
+					$result = mysqli_query($conn,$sql);
+					if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+					{
+						echo $row["loc_name"]."<br>".$row["comp_name"]."<br>".$row["address"]."<br>".$row["City"]."<br>".$row["country"]."<br>".$row["time_zone"]."<br>".$row["currency"]."<br>".$row["contact"]."<br>".$row["start_time"]."<br>".$row["end_time"];
+					}
+		?>-->   
+		</div>
+        <!-------Genral Details end here-------------->
+        
+        <!-------Discount start here------------>
+		<div role="tabpanel" class="tab-pane" id="Discounts">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="container">
+                        <div class="row col-md-12">
+                            <button type="button" class="btn btn-primary" data-target="#form_Discounts" data-toggle="modal">Add Discount</button>
+                        </div>
+                    </div>
+                    <div class="DiscountTable container">
+                       <table class="table table-responsive table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Rate</th>
+                                    <th>Visibility</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sunday-Off</td>
+                                    <td>Percentage</td>
+                                    <td>10</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday-Off</td>
+                                    <td>Percentage</td>
+                                    <td>10</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday-Off</td>
+                                    <td>Percentage</td>
+                                    <td>10</td>
+                                    <td>Yes</td>
+                                    <td>
+                                        <button type="button" class="btn btn-default">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-info">
+                                            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+		<!--<?php
+			$conn = new mysqli("localhost","root","","c1");
+					// Check connection
+					if ($conn->connect_error) 
+					{
+						die("Connection failed: " . $conn->connect_error);
+					}
+					$sql = "SELECT * from discounts where loc_id='$loc';";
+					$result = mysqli_query($conn,$sql);
+					if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+					{
+						echo "Name:".$row["name"]."   Type:".$row["type"]."     Rate:".$row["rate"]."      Status".$row["status"]."<br>";
+						while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
+						{
+							echo "Name".$row["name"]."   Type:".$row["type"]."     Rate:".$row["rate"]."      Status".$row["status"]."<br>";
+						}
+					}
+					else
+					{
+						echo "no discounts yet<br>";
+					}
+					echo "<button class=btn btn-default data-target=#form_Discounts type=button data-toggle=modal>Add Discount</button>";
+					
+		?>-->
+		<!-------------- modal for Discounts ----------------->
+			<div class="modal fade" id="form_Discounts" tabindex="-1" role="dialog" aria-labelledby="myModalLable">
+				<div class="modal-dialog modal-sm" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h3 class="text-center">Discount</h3>
+						</div>
+						<div class="modal-body">
+							<form class="form-horizontal" role="form" method="POST" action="make_discount.php">
+								<div class="form-group">
+									<label for="cat" class="control-label col-md-3">Name</label>
+									<div class="col-md-9">
+										<input type="text" name="N3" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="cat" class="control-label col-md-3">Type</label>
+									<div class="col-md-9">
+										<input type="text" name="N2" class="form-control">
+									</div>
+								</div>
+							<div class="form-group">
+								<label for="st_time" class="control-label col-md-3">Rate</label>
+								<div class="col-md-9">
+									<input type="number" name="N4" class="form-control">
+								</div>
+							</div>								
+							<div class="form-group">
+								<label for="cat" class="control-label col-md-3">VISIBILITY</label>
+								<div class="col-md-9">
+									<div class="checkbox">
+										<div>
+											<label class="radio-inline">
+												<input type="radio" name="N5" value="1">yes
+											</label>
+											<label class="radio-inline">
+												<input type="radio" name="N5" value="0">no
+											</label>
+										</div>
+									</div>
+								</div>	
+							</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit!</button>
+                            </div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        <!------------- end of modal for Discount ----------->
+		</div>
+        <!-------Discount end here-------------->
+        
+        <!-------TAX start here------------>
+        <div role="tabpanel" class="tab-pane" id="tax">
+		<!--<?php
+			
+			$conn = new mysqli("localhost","root","","c1");
+			// Check connection
+			if ($conn->connect_error) 
+			{
+				die("Connection failed: " . $conn->connect_error);
+			}
+			$temp=$_SESSION['u_loc'];
+			$sql="select * from tax_master where loc_id=$temp";
+			$result = mysqli_query($conn,$sql);
+			if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+			{
+					echo "defined taxes";
+					echo "<button class=\"btn btn-primar\">".$row["tax_name"]."</button>";
+					echo "<button class=\"btn btn-primar\">".$row["tax_rate"]."</button>";
+					echo "<button class=\"btn btn-primar\">".$row["tax_type"]."</button>";
+					echo"<br><br><br><br>";
+					while(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+					{
+						echo "<button class=\"btn btn-primar\">".$row["tax_name"]."</button>";
+						echo "<button class=\"btn btn-primar\">".$row["tax_rate"]."</button>";
+						echo "<button class=\"btn btn-primar\">".$row["tax_type"]."</button>";
+						echo"<br><br><br><br>";
+					}
+			}
+			else
+			{
+				echo"no tax defined";
+			}
+			$sql="select * from service_charge where loc_id=$temp";
+			$result = mysqli_query($conn,$sql);
+			if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+			{	
+					echo "defined service charge";
+					echo "<button class=\"btn btn-primar\">".$row["SC_name"]."</button>";
+					echo "<button class=\"btn btn-primar\">".$row["SC_amount"]."</button><br>";
+					
+					while(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+					{
+						echo "<button class=\"btn btn-primar\">".$row["SC_name"]."</button>";
+						echo "<button class=\"btn btn-primar\">".$row["SC_amount"]."</button><br>";
+					}
+			}
+			else
+				echo "<br>no SC defined";
+		?>-->
+        
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6 text-center container">
+                            <h3>TAX</h3>
+                            <table class="table table-responsive table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>VAT</th>
+                                        <th>Rate</th>
+                                        <th>Type</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>VAT</td>
+                                        <td>12.5</td>
+                                        <td>SubTotal</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>VAT</td>
+                                        <td>12.5</td>
+                                        <td>SubTotal</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>VAT</td>
+                                        <td>12.5</td>
+                                        <td>SubTotal</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="loc_tax_management.php"><button class="btn btn-primary">Make a tax</button></a>
+                        </div>
+                        <div class="col-md-6 text-center container">
+                            <h3>SERVICE CHARGE</h3>
+                            <table class="table table-responsive table-striped table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>S.No</th>
+                                        <th>Name</th>
+                                        <th>Rate</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Home Delivery</td>
+                                        <td>12.5</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Home Delivery</td>
+                                        <td>12.5</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Home Delivery</td>
+                                        <td>12.5</td>
+                                        <td>
+                                            <button type="button" class="btn btn-default">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            </button>
+                                            <button type="button" class="btn btn-danger">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a href="make_service_charge.php"><button class="btn btn-primary">Make a service charge</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+		
+		
+		
+		</div>
+        <!-------Tax end here-------------->
+		
+		<!-------Menu start here------------>
+        <div role="tabpanel" class="tab-pane" id="menu">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="container col-md-12">
+                    <div id="allCategories" class="container col-md-8">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h3><span class="glyphicon glyphicon-home" aria-hidden="true"></span> All Categories</h3>
+                            </div>
+                            <div class="searchBox col-md-3">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Search for...">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    <!--<div id="categories" class="text-center">
+                            <nav>
+                              <ul class="pagination">
+                                <li>
+                                  <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                  </a>
+                                </li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li>
+                                  <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                  </a>
+                                </li>
+                              </ul>
+                            </nav>
+                        </div>------>
+                        <div id="productInformation">
+                            <table class="table table-responsive table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Product Information</th>
+                                        <th>Price</th>
+                                        <th class="col-xs-3">Edit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--<?php
+                                        $conn = new mysqli("localhost","root","","c1");
+                                        // Check connection
+                                        if ($conn->connect_error) 
+                                        {
+                                                die("Connection failed: " . $conn->connect_error);
+                                        }
+                                        if(isset($_SESSION['u_loc_cat_id']))
+                                        {
+                                            $loc=$_SESSION['u_loc'];
+                                            $cat_id=$_SESSION['u_loc_cat_id'];
+                                            $sql = "SELECT * from item_slave where loc_id='$loc' and cat_id='$cat_id';";
+                                            $result = mysqli_query($conn,$sql);
+                                            if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+                                            {
+                                                if($row["visibility"]=="1")
+                                                {
+                                                    echo "<tr>
+                                                            <td>".$row["item_name"]."</td>
+                                                            <td>Rs".$row["default_price"]."</td>
+                                                            <td>
+                                                                <button type=\"button\" class=\"btn btn-default\">
+                                                                    <span class=\"label label-success\"><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>
+                                                                    </span>
+                                                                </button>
+                                                                <button type=\"button\" class=\"btn btn-info\">
+                                                                    Edit
+                                                                </button>
+                                                            </td>
+                                                          </tr>";
+                                                }
+                                                else
+                                                {
+                                                    echo "<tr>
+                                                            <td>".$row["item_name"]."</td>
+                                                            <td>Rs".$row["default_price"]."</td>
+                                                            <td>
+                                                                <button type=\"button\" class=\"btn btn-default\">
+                                                                    <span class=\"label label-default\"><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>
+                                                                    </span>
+                                                                </button>
+                                                                <button type=\"button\" class=\"btn btn-info\">
+                                                                    Edit
+                                                                </button>
+                                                            </td>
+                                                          </tr>";
+                                                }
+                                                while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
+                                                {
+                                                    if($row["visibility"]=="1")
+                                                    {
+                                                        echo "<tr>
+                                                            <td>".$row["item_name"]."</td>
+                                                            <td>Rs".$row["default_price"]."</td>
+                                                            <td>
+                                                                <button type=\"button\" class=\"btn btn-default\">
+                                                                    <span class=\"label label-success\"><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>
+                                                                    </span>
+                                                                </button>
+                                                                <button type=\"button\" class=\"btn btn-info\">
+                                                                    Edit
+                                                                </button>
+                                                            </td>
+                                                          </tr>";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "<tr>
+                                                            <td>".$row["item_name"]."</td>
+                                                            <td>Rs".$row["default_price"]."</td>
+                                                            <td>
+                                                                <button type=\"button\" class=\"btn btn-default\">
+                                                                    <span class=\"label label-default\"><span class=\"glyphicon glyphicon-ok\" aria-hidden=\"true\"></span>
+                                                                    </span>
+                                                                </button>
+                                                                <button type=\"button\" class=\"btn btn-info\">
+                                                                    Edit
+                                                                </button>
+                                                            </td>
+                                                          </tr>";
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                echo "no items yet<br>";
+                                            }
+                                            
+                                        }
+                                        else
+                                        {
+                                            echo"please select a category";
+                                        }
+                
+                                    ?>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="categoriesInput" class="container col-md-4">
+                        <div><button type="button" class="btn btn-success btn-block " href="#Item_modal" data-toggle="modal" data-target="
+                        <?php
+                            if($cat_var==1)
+                                echo"#Item_modal";
+                            else
+                                echo"#";
+                        ?>"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Dish</button></div>
+                        <div><button type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload-Menu</button></div>
+                        <div class="panel panel-primary">
+                          <div class="panel-heading">Categories</div>
+                            <div class="CategoriesBox">
+                              <ul class="list-group">
+                                <?php
+                                    $conn = new mysqli("localhost","root","","c1");
+                                    // Check connection
+                                    if ($conn->connect_error) 
+                                    {
+                                        die("Connection failed: " . $conn->connect_error);
+                                    }
+                                    $loc=$_SESSION["u_loc"];
+                                    $sql = "SELECT * from category_master where loc_id='$loc'";
+                                    $result = mysqli_query($conn,$sql);
+                                    if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+                                    {
+                                        $id=$row["cat_id"];
+                                        if(isset($_SESSION['u_loc_cat_id'])&&$_SESSION['u_loc_cat_id']==$id)
+                                        {
+                                            
+                                            echo "<form action=\"set_sess_cat.php\"><input type=submit class=\"btn btn-success\" value=".$row["cat_name"]." style=\"width:100%;text-align:left;\">
+                                                        <input type=hidden name=hid value=$id>
+                                                  </form>";
+                                        }
+                                        else
+                                        {
+                                            echo "<form action=\"set_sess_cat.php\"><input type=submit class=\"btn btn-default\" value=".$row["cat_name"]." style=\"width:100%;text-align:left;\">
+                                                        <input type=hidden name=hid value=$id>
+                                                  </form>";
+                                        }
+                                        while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
+                                        {
+                                            $id=$row["cat_id"];
+                                            if(isset($_SESSION['u_loc_cat_id'])&&$_SESSION['u_loc_cat_id']==$id)
+                                            {
+                                                $id=$row["cat_id"];
+                                                echo "<form action=\"set_sess_cat.php\"><input type=submit class=\"btn btn-success\" value=".$row["cat_name"]." style=\"width:100%;text-align:left;\">
+                                                            <input type=hidden name=hid value=$id>
+                                                      </form>";
+                                            }
+                                            else
+                                            {
+                                                echo "<form action=\"set_sess_cat.php\"><input type=submit class=\"btn btn-default\" value=".$row["cat_name"]." style=\"width:100%;text-align:left;\">
+                                                            <input type=hidden name=hid value=$id>
+                                                      </form>";
+                                            }
+                                        }										
+                                    }
+                                    else
+                                        echo "<li class=L-group-item>NONE</li>";
+                                ?>
+                                <!---------<li class="list-group-item">Chicken</li>-------->
+                              </ul>
+                            </div> 
+                        </div>
+                        <div><button data-toggle="modal" data-target="#form_categories" type="button" class="btn btn-warning btn-block">Add a category</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------- modal for category ------------->
+        <div class="modal fade" id="form_categories" tabindex="-1" role="dialog" aria-labelledby="myModalLable">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1 class="text-center">Registration Form</h1>
+                        <div class="alert alert-warning text-center">
+                            Please fill the form carefully.
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" method="POST" action="make_category.php">                        
+                            <div class="form-group">
+                                <label for="cat" class="control-label col-md-2">Category</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="N1" class="form-control">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label for="st_time" class="control-label col-md-2">Start Time</label>
+                            <div class="col-md-6">
+                                <input type="number" name="N3" class="form-control">
+                            </div>
+                        </div>								
+                        <div class="form-group">
+                            <label for="ed_time" class="control-label col-md-2">End Time</label>
+                            <div class="col-md-6">
+                                <input type="number" name="N4" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Monday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D1" value="1">Yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D1" value="0">No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Tuesday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D2" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D2" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Wednesday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D3" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D3" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Thrusday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D4" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D4" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Friday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D5" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D5" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Saturday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D6" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D6" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">Sunday Visibility</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D7" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="D7" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="cat" class="control-label col-md-2">VISIBILITY</label>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="N6" value="1">yes
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="N6" value="0">no
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>	
+                        </div>
+                        <div class="form-group">
+                            <label for="st_date" class="control-label col-md-2">Start Date</label>
+                            <div class="col-md-6">
+                                <input type="text" name="N7" class="form-control">
+                            </div>
+                        </div>								
+                        <div class="form-group">
+                            <label for="end_date" class="control-label col-md-2">End Date</label>
+                            <div class="col-md-6">
+                                <input type="text" name="N8" class="form-control">
+                            </div>
+                        </div>							
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------- end of modal for add categories ----------->
+        <!--<div class="category-box-down col-md-2">
+            <ul class="list-group"> 
+            </ul>    
+        </div>-->
+        <!--<button class="btn btn-primary" href="#Item_modal" data-toggle=modal data-target="#Item_modal" >Hello</button>-->
+        <!-------------- modal for item----------------->
+        <div class="modal fade" id="Item_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLable">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h1 class="text-center">Add Item</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form" method="POST" action="make_item.php">
+                            <div class="form-group">
+                                <label for="name" class="control-label col-md-2">Name</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="N2" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_1" class="control-label col-md-2">ALT_UNIT_1</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="N12" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_1" class="control-label col-md-2">ALT_UNIT_1_Price</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N15" value="ALT_UNIT_1_Price" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_2" class="control-label col-md-2">ALT_UNIT_2</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="N13" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_2" class="control-label col-md-2">ALT_UNIT_2_Price</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N16" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_3" class="control-label col-md-2">ALT_UNIT_3</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="N14" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="ALT_UNIT_3" class="control-label col-md-2">ALT_UNIT_3_Price</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N17" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="barcode" class="control-label col-md-2">Barcode</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N3" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Monday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D1" value="1">Yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D1" value="0">No
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Tuesday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D2" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D2" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Wednesday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D3" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D3" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Thrusday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D4" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D4" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Friday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D5" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D5" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Saturday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D6" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D6" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Sunday Visibility</label>
+                                    <div class="col-md-6">
+                                        <div class="checkbox">
+                                            <div>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D7" value="1">yes
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="D7" value="0">no
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>	
+                                </div>
+                            <div class="form-group">
+                                <label for="Default_price" class="control-label col-md-2">Default Price</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N4" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">	
+                                <label for="Discount" class="control-label col-md-2">Discount</label>
+                                <div class="col-md-6">
+                                    <label class="radio-inline">
+                                      <input type="radio" name="N11" id="inlineRadio1" value="1">Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" name="N11" id="inlineRadio2" value="0">No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Start_Time" class="control-label col-md-2">Start Time</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N8" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="End_Time" class="control-label col-md-2">End Time</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N7" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Packaging_Charges" class="control-label col-md-2">Packaging Charges</label>
+                                <div class="col-md-6">
+                                    <input type="number" name="N5" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                    <label for="st_date" class="control-label col-md-2">Start Date</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="N19" class="form-control">
+                                    </div>
+                                </div>								
+                                <div class="form-group">
+                                    <label for="end_date" class="control-label col-md-2">End Date</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="N18" class="form-control">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <label for="Visibilty" class="control-label col-md-2">Visibilty</label>
+                                <div class="col-md-6">
+                                    <label class="radio-inline">
+                                      <input type="radio" name="N10" id="Visibilty_yes" value="1">Yes
+                                    </label>
+                                    <label class="radio-inline">
+                                      <input type="radio" name="N10" id="Visibilty_no" value="0">No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vat" class="control-label col-md-2">VAT</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="N21">
+                                      <option>Select an option</option>
+                                    <?php
+                                        $conn = new mysqli("localhost","root","","c1");
+                                        if ($conn->connect_error) 
+                                        {
+                                            die("Connection failed: " . $conn->connect_error);
+                                        }
+                                        $sql = "SELECT * from tax_master where loc_id='$loc' and tax_type='4'";
+                                        $result = mysqli_query($conn,$sql);
+                                        if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+                                        {
+                                            echo "Select which Vat to apply:";
+                                            echo "<option value=".$row["tax_id"].">Name:".$row["tax_name"]."Amount".$row["tax_rate"]."</option>";
+                                            while(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+                                            {
+                                                echo "Select which Vat to apply:";
+                                                echo "<option value=".$row["tax_id"].">Name:".$row["tax_name"]."Amount".$row["tax_rate"]."</option>";
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "<option value=none>No tax made yet please make a vat to apply before making an item.</option>";
+                                        }
+                                  ?>
+                                    </select>
+                                </div>
+                            </div>	
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit!</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!------------- end of modal for item ----------->
+        </div>
+        <!-------Menu end here-------------->
+
+		<!-------Staff start here----------->
+        <div role="tabpanel" class="tab-pane" id="staff">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="container col-md-12">
+                    <div id="staffHeader" class="container col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>Staff</h3>
+                            </div>
+                            <div class="searchBox col-md-3">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="Search Staff">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                  </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="staffTable" class="container col-md-12">
+                        <div id="addStaffButton" class="container col-md-12">
+                            <div class="row">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddStaffModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Staff</button>
+                            </div>
+                        </div>
+                        <div class="container col-md-12">
+                            <div class="row">
+                                <div id="staffInformation" class="container col-md-9">
+                                    <table class="table table-responsive table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Staff Name</th>
+                                                <th>Staff Role</th>
+                                                <th>Current Location</th>
+                                                <th>Email Address</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Aman</td>
+                                                <td>Driver</td>
+                                                <td>All Location</td>
+                                                <td>amangupta@gmail.com</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-default">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-info">
+                                                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aman</td>
+                                                <td>Driver</td>
+                                                <td>All Location</td>
+                                                <td>amangupta@gmail.com</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-default">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-info">
+                                                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Aman</td>
+                                                <td>Driver</td>
+                                                <td>All Location</td>
+                                                <td>amangupta@gmail.com</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-default">
+                                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-danger">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </button>
+                                                    <button type="button" class="btn btn-info">
+                                                        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="staffBox" class="container col-md-3">
+                                    <div class="panel panel-primary">
+                                      <div class="panel-heading">Categories</div>
+                                        <div class="CategoriesBox">
+                                          <ul class="list-group">
+                                            <li class="list-group-item">Admin</li>
+                                            <li class="list-group-item">Driver</li>
+                                            <li class="list-group-item">Captain</li>
+                                            <li class="list-group-item">Cook</li>
+                                            <li class="list-group-item">Waiter</li>
+                                            <li class="list-group-item">Manager</li>
+                                            <li class="list-group-item">Cashier</li>
+                                            <li class="list-group-item">Service manager</li>
+                                            <li class="list-group-item">Head Chef</li>
+                                            <li class="list-group-item">Helper</li>
+                                          </ul>
+                                        </div> 
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddNewRoleModal"><span class="glyphicon-plus"></span> Add New Role</button>
+                                    </div>
+                                    <br>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-warning">&nbsp; &nbsp; &nbsp;<span class="glyphicon-plus"></span> Edit Role&nbsp; &nbsp; &nbsp;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------Modal for Add new staff start here--------->
+        <div class="modal fade" id="AddStaffModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+               <div class="modal-header text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3>Add Staff</h3>
+               </div>
+               <div class="modal-body">
+                    <form class="form" role="form" method="post" action="#">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="name" class="form-control" placeholder="Email Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="name" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <input type="Number" name="name" class="form-control" placeholder="Swipe Card Number">
+                        </div>
+                        <div class="form-group">
+                            Assign To:
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>AllOutlet/Location</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            Role:
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                       <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                       </div>
+                    </form>
+               </div>
+              </div>
+            </div>
+        </div>
+        <!----------Modal for Add new staff end here----------->
+        
+        <!--------- Modal for Update staff start here---------->
+        <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"><!--Id of user need to add here-->
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+           <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3>Update Staff</h3>
+           </div>
+           <div class="modal-body">
+                <form class="form" role="form" method="post" action="#">
+                    <div class="form-group">
+                        <input type="text" name="name" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="name" class="form-control" placeholder="Email Address">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="name" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="Number" name="name" class="form-control" placeholder="Swipe Card Number">
+                    </div>
+                    <div class="form-group">
+                        Assign To:
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>AllOutlet/Location</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        Role:
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>Admin</option>
+                        </select>
+                    </div>
+                   <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                   </div>
+                </form>
+           </div>
+          </div>
+        </div>
+        </div>
+        <!--------- Modal for Update staff end here------------>
+        
+        <!----------Modal for Add New Role start here---------->
+        <div class="modal fade" id="AddNewRoleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+           <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h3>ADD New Role</h3>
+           </div>
+           <div class="modal-body">
+                <form class="form" role="form" method="post" action="#">
+                   <div class="row">
+                       <div class="col-md-6">
+                           <div class="form-group">
+                               <label for="role" class="">Role</label>
+                               <input type="text" class="form-control col-md-4" placeholder="Eg. Admin">
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <div class="form-group">
+                               <label for="role" class="">Default Page</label>
+                               <select class="form-control">
+                                   <option>Walk In</option>
+                               </select>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="checkbox">
+                       <label>
+                           <input type="checkbox">Super Admin
+                       </label>
+                   </div>
+                   <div class="page-header">
+                       <h4>Access Right &amp; Permissions</h4>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Panal One</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c1_o1" value="1"><!--p1_c1_o1 this means panal_one_column_option_one-->
+                                      Company Detail
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c1_o2" value="1">
+                                      Menu
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c1_o3" value="1">
+                                      Staff
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c1_o4" value="1">
+                                      Rahbar Online
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c2_o1" value="1">
+                                      Location
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c2_o2" value="1">
+                                      Inventory
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c2_o3" value="1">
+                                      Global Setting
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p1_c2_o4" value="1">
+                                      My Account
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <h5>Panal Two</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c1_o1" value="1">
+                                      View Call Center
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c1_o2" value="1">
+                                      View Dine-In
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c1_o3" value="1">
+                                      View PDA
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c1_o4" value="1">
+                                      View Service Manager
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c2_o1" value="1">
+                                      View Delivery Manager
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c2_o2" value="1">
+                                      View Delivery Assistent
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c2_o3" value="1">
+                                      View Walk-In
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p2_c2_o4" value="1">
+                                      View Walk-In Orders
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Panal Three</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c1_o1" value="1"><!--p1_c1_o1 this means panal_one_column_option_one-->
+                                      Post Announcement
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c1_o2" value="1">
+                                      Marketing Reports
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c1_o3" value="1">
+                                      Sales Summury Report
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c2_o1" value="1">
+                                      Sales Report
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c2_o2" value="1">
+                                      Inventory Report
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p3_c2_o3" value="1">
+                                      Saved Report
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <h5>Panal Four</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c1_o1" value="1"><!--p1_c1_o1 this means panal_one_column_option_one-->
+                                      Create Order
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c1_o2" value="1">
+                                       Cancel Order
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c1_o3" value="1">
+                                      View Web-Order
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c2_o1" value="1">
+                                      Modify Order
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c2_o2" value="1">
+                                      Add Discount
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p4_c2_o3" value="1">
+                                      Confirm Web Orders
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="row">
+                       <div class="col-md-6">
+                           <h5>Panal Five</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c1_o1" value="1"><!--p1_c1_o1 this means panal_one_column_option_one-->
+                                      View Current Stock
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c1_o2" value="1">
+                                      Manage Stock Transfer
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c1_o3" value="1">
+                                      Receive Stock
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c1_o4" value="1">
+                                      Stock Take
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c2_o1" value="1">
+                                      Manage Purchasing
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c2_o2" value="1">
+                                      Manage Batch Production
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p5_c2_o3" value="1">
+                                      Issue Stock
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           <h5>Panal Six</h5>
+                           <div class="row">
+                               <div class="col-md-offset-1 col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p6_c1_o1" value="1"><!--p1_c1_o1 this means panal_one_column_option_one-->
+                                      Recipes
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p6_c1_o2" value="1">
+                                      Finished Goods
+                                    </label>
+                                  </div>
+                               </div>
+                               <div class="col-md-5">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p6_c2_o1" value="1">
+                                      Ingredients &amp; Sub Recipes
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" name="p6_c2_o2" value="1">
+                                      Inventory Setting
+                                    </label>
+                                  </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                   </div>
+                </form>
+           </div>
+           <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save</button>
+           </div>-->
+          </div>
+        </div>
+        </div>
+        <!--------- Modal for Add New Role end here------------>
+        </div>
+        <!-------Staff end here------------->
+        
+        <!-----Dining Section start here-------->
+		<div role="tabpanel" class="tab-pane" id="D_S">
+         <!--<?php
+                $conn = new mysqli("localhost","root","","c1");
+                        // Check connection
+                        if ($conn->connect_error) 
+                        {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+                        $c_name=$_SESSION['u_company'];
+                        $loc=$_SESSION['u_loc'];
+                        $sql = "SELECT * from dining_sections where loc_id='$loc';";
+                        $result = mysqli_query($conn,$sql);
+                        if(($row =mysqli_fetch_array($result,MYSQLI_ASSOC)))
+                        {
+                            $temp2=$row["area"];
+                            $area_code=$row["area_code"];
+                            echo "<form action=set_sess_d.php><button class btn-default>$temp2</button>
+                            <input type=hidden name=hid value=$area_code>
+                            </form>";
+                            while($row =mysqli_fetch_array($result,MYSQLI_ASSOC))
+                            {
+                                $temp2=$row["area"];
+                                $area_code=$row["area_code"];
+                                echo "<form action=set_sess_d.php><button class btn-default>$temp2</button>
+                                <input type=hidden name=hid value=$area_code>
+                                </form>";
+                            }
+                        }
+                        else
+                            echo "No Area Yet";
+                        echo "<button class=btn btn-default data-target=#form_Area type=button data-toggle=modal>Add Dine-in section</button>";      
+            ?>-->
+            <!-------------- modal for Dine-in ----------------->
+            <div class="modal fade" id="form_Area" tabindex="-1" role="dialog" aria-labelledby="myModalLable">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h1 class="text-center">Dine In</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" method="POST" action="make_d_area.php">
+                                <div class="form-group">
+                                    <label for="cat" class="control-label col-md-2">Name</label>
+                                    <div class="col-md-6">
+                                        <input type="text" name="N2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------- end of modal for dine-in ----------->
+		</div>
+        <!-----Dining Section end here---------->
+        
+      </div>
+        
+	<script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

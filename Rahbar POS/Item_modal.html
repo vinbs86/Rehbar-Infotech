@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Item Modal</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato"  type="text/css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat"  type="text/css">
+ 
+    <style>
+    </style>
+</head>
+
+<body>
+	
+    <button type="button" class="btn btn-primary btn-lg"  data-toggle="modal" data-target="#join"></button>
+	
+    <!-------------- modal for item----------------->
+    <div class="modal fade" id="Item_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLable">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h1 class="text-center">Add Item</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" method="post" action="#">
+                        <div class="form-group">
+                            <label for="name" class="control-label col-md-2">Name</label>
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_1" class="control-label col-md-2">ALT_UNIT_1</label>
+                            <div class="col-md-6">
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_1" class="control-label col-md-2">ALT_UNIT_1_Price</label>
+                            <div class="col-md-6">
+                                <input type="number" name="ALT_UNIT_1_Price" value="ALT_UNIT_1_Price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_2" class="control-label col-md-2">ALT_UNIT_2</label>
+                            <div class="col-md-6">
+                                <input type="text" name="ALT_UNIT_2" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_2" class="control-label col-md-2">ALT_UNIT_2_Price</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="ALT_UNIT_2_Price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_3" class="control-label col-md-2">ALT_UNIT_3</label>
+                            <div class="col-md-6">
+                                <input type="text" name="ALT_UNIT_3" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ALT_UNIT_3" class="control-label col-md-2">ALT_UNIT_3_Price</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="ALT_UNIT_3_Price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="barcode" class="control-label col-md-2">Barcode</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="Barcode" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="CAT_NAME" class="control-label col-md-2">Categorie Name</label>
+                            <div class="col-md-6">
+                                <input type="text" name="CAT_NAME" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="days" class="control-label col-md-2">Days</label>
+                            <div class="col-md-6">
+                            	<label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox1" value="Sunday">Sunday
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox2" value="Monday">Monday
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox3" value="Tuesday">Tuesday
+                                </label>
+                            	<label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox4" value="Wednesday">Wednesday
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox5" value="Thursday">Thursday
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox6" value="Friday">Friday
+                                </label>
+                                <label class="checkbox-inline">
+                                  <input type="checkbox" id="inlineCheckbox7" value="Saturday">Saturday
+                                </label>                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Default_price" class="control-label col-md-2">Default Price</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="Default_price" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Discount" class="control-label col-md-2">Discount</label>
+                            <div class="col-md-6">
+                            	<label class="radio-inline">
+                                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Discount_yes">Yes
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Discount_no">No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Start_Time" class="control-label col-md-2">Start Time</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="Start_Time" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="End_Time" class="control-label col-md-2">End Time</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="End_Time" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Packaging_Charges" class="control-label col-md-2">Packaging Charges</label>
+                            <div class="col-md-6">
+                            	<input type="number" name="Packaging_Charges" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Visibilty" class="control-label col-md-2">Visibilty</label>
+                            <div class="col-md-6">
+                            	<label class="radio-inline">
+                                  <input type="radio" name="Visibilty" id="Visibilty_yes" value="Visibilty_yes">Yes
+                                </label>
+                                <label class="radio-inline">
+                                  <input type="radio" name="Visibilty" id="Visibilty_no" value="Visibilty_no">No
+                                </label>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!------------- end of modal for item ----------->
+
+    
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+</body>
+</html>
